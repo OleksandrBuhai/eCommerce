@@ -10,7 +10,7 @@ export interface ProductType {
   name: string;
   text: string;
   type: string;
-  size?: string[] ;
+  size?: string[];
   color: Array<string>;
   gender: string;
   price: number;
@@ -77,7 +77,7 @@ export const SingleProduct: React.FC = () => {
                         onChange={(e) => setSize(e.target.value)}
                         className={sizeSelectClass}
                       >
-                        {el.size?.map((item, index) => (
+                        {((el.size || []) as string[]).map((item, index) => (
                           <option key={index} value={item}>
                             {item}
                           </option>

@@ -92,25 +92,28 @@ const slice = createSlice({
             }
         }
         ,
-        filterBySize: (state, action: PayloadAction<{ size: string }>) => {
-            try {
-                const size = state.filterProducts.filter((product) =>
-                  product.size?.includes(action.payload.size)
-                );
-                
-                state.filterProducts = size;
-                if (size.length <= 0) {
-                
-                  state.filterProducts = [];
-                } else {
-                  
-                  state.filterProducts = size;
-                  const saveState = JSON.stringify(size);
-                  localStorage.setItem("filteredData", saveState);
-                }
-              } catch (err) {
-                return err;
-              }
+        filterBySize: (state, action: PayloadAction<{ size: string }>):void => {
+          try {
+            const size = state.filterProducts.filter((product) =>
+              product.size?.includes(action.payload.size)
+            );
+    
+            state.filterProducts = size;
+    
+            if (size.length <= 0) {
+              state.filterProducts = [];
+            } else {
+              state.filterProducts = size;
+              const saveState = JSON.stringify(size);
+              localStorage.setItem("filteredData", saveState);
+            }
+            
+            // Тут тип має бути void, оскільки немає значення, яке повертається
+            return;
+          } catch (err:any) {
+            // Тут можна повернути об'єкт з помилкою або специфічний тип помилки
+            console.error("Error filtering by gender:", err);;
+          }
           }
     }
 })

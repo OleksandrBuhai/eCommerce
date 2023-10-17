@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { filteredAction } from "../../reduxStore/filterSlice/filterSlice";
 import { RootState } from "../../reduxStore/store";
 import { ProductCart } from "./ProductCart/ProductCart";
-import { useState } from "react";
 
 interface ProductCart {
   id: string;
@@ -54,7 +53,7 @@ export const SelectedProduct: React.FC = () => {
   <button
     className="shadow-lg shadow-gray-500/50 p-3 md:p-5 rounded-xl hover:scale-105 hover:shadow-cyan-500/50 ease-in-out duration-500"
     onClick={() => {
-      dispatch(filteredAction.sortByPrice({null:null}));
+      dispatch(filteredAction.sortByPrice());
     }}
   >
     Price
