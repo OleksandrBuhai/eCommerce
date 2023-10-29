@@ -25,7 +25,7 @@ const initialState: CartState = {
 };
 
 const savedCartString = localStorage.getItem("cart");
-const savedCart = savedCartString ? JSON.parse(savedCartString) : initialState;
+const savedCart:CartState = savedCartString ? JSON.parse(savedCartString) : initialState;
 
 const slice = createSlice({
   name: "cart",

@@ -8,7 +8,7 @@ import {
 } from "@material-tailwind/react";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CartState, removeFromCart } from "../../reduxStore/addToBag/addSlice";
+import { removeFromCart } from "../../reduxStore/addToBag/addSlice";
 import { RootState } from "../../reduxStore/store";
 
 
@@ -20,13 +20,15 @@ interface CartType {
 
 export const Cart: React.FC<CartType> = ({ openModal, setOpen }) => {
 
-  const cart:CartState = useSelector((state: RootState) => state.addReducer.cart);
+  const cart = useSelector((state: RootState) => state.addReducer.cart);
   const totalPrice = useSelector((state: RootState) => state.addReducer.totalPrice)
+
+  console.log(cart)
 
   const dispatch = useDispatch();
   return (
     <div>
-      {cart.cart.length > 0 ? (
+      {cart.length > 0 ? (
         <Fragment>
           <Dialog
             className="border-0 outline-0"
@@ -41,7 +43,7 @@ export const Cart: React.FC<CartType> = ({ openModal, setOpen }) => {
             <DialogBody
              divider className="overflow-y-auto max-h-[400px] grid grid-cols-3"
             >
-              {cart.cart.map((item, index) => {
+              {cart.map((item, index) => {
                 return (
                   <div key={index}>
                     <div className="grid grid-cols-2 py-4">

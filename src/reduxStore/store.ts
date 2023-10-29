@@ -6,11 +6,13 @@ import { sliderReducer } from "./sliderSlice/sliderSlice";
 
 
 
+
 export const store = configureStore({
     reducer: {
         sliderReducer,
         filterReducer,
         addReducer,
+    
         authReducer
     },
    

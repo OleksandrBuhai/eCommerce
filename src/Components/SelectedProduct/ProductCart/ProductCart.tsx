@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import { baseURL } from "../../../router";
 
 type ProductCartProps = {
     id:string;
@@ -17,7 +18,7 @@ type ProductCartProps = {
 
 
     return (
-        <Link to={`/selectedProducts/${type}/`+ id}>
+        <Link to={`${baseURL}/selectedProducts/${type}/`+ id}>
          
       <div className="flex flex-col border-solid border-2 border-gray-200 rounded-md p-5 gap-5">
         <div>
